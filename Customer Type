@@ -1,0 +1,21 @@
+SELECT c.AccountNumber
+		, CASE WHEN c.PersonID IS NULL AND c.StoreID IS NOT NULL THEN 'Store'
+			   WHEN c.PersonID IS NOT NULL AND c.StoreID IS NULL THEN 'Person'
+			   WHEN c.PersonID IS NOT NULL AND c.StoreID IS NOT NULL THEN 'Store with Contact'
+			   ELSE 'Error' 
+			   END AS Customer_Type
+		, CASE WHEN c.PersonID IS NOT NULL AND c.StoreID IS NULL 
+					THEN CONCAT(p.LastName, ', ', p.FirstName, CASE WHEN p.MiddleName IS NOT NULL THEN CONCAT(' ', LEFT(p.MiddleName,1),'.') ELSE '' END)
+			   WHEN c.PersonID IS NULL AND c.StoreID IS NOT NULL
+					THEN s.Name
+			   WHEN c.PersonID IS NOT NULL AND c.StoreID IS NOT NULL
+					THEN CONCAT(s.Name, ' - ',CONCAT(p.LastName, ', ', p.FirstName, CASE WHEN p.MiddleName IS NOT NULL THEN CONCAT(' ', LEFT(p.MiddleName,1),'.') ELSE '' END))
+			   ELSE 'Error' 
+			   END AS Customer_Name
+		
+FROM Sales.Customer AS c
+LEFT JOIN Person.Person AS p
+ON c.PersonID = p.BusinessEntityID
+LEFT JOIN Sales.Store AS s
+ON c.StoreID = s.BusinessEntityID
+ORDER BY c.AccountNumber ASC;
