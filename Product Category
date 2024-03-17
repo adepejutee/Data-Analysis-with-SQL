@@ -1,0 +1,19 @@
+SELECT p.ProductID
+       ,p.productNumber
+	   , p.Name AS ProductName
+	   , pm.Name As ProductModelName
+	   , p.MakeFlag
+	   , p.FinishedGoodsFlag
+	   , p.ListPrice 
+	   , p.StandardCost
+	   , psc.Name AS ProductSubCategoryName
+	   , pc.Name AS productCategoryName
+FROM Production.Product AS p
+LEFT JOIN Production.ProductSubcategory AS psc
+ON p.ProductSubcategoryID = psc.ProductSubcategoryID
+LEFT JOIN production.productCategory AS pc
+ON psc.ProductCategoryID = pc.ProductCategoryID
+LEFT JOIN production.productModel AS pm
+   ON p.ProductModelID = pm.ProductModelID  
+WHERE p.ListPrice > 0 OR P.StandardCost > 0
+ORDER BY p.ProductID;
