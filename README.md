@@ -1,2 +1,5 @@
 # Data-Analysis-with-SQL
 AdventureWorks2017 Database AnalysisAdventureWorks2017 Database Analysis 
+Explored the AdventureWorks2017 database and its schemas, tables, views and relationships using Microsoft SQL server and ER diagrams. 
+• Identified opportunities for process optimization and data-driven decision-making based on insights derived from the AdventureWorks2017 database.
+• Analyzed the key performance indicators (KPIs) such as sales, profit, cost, markup percentage using SQL functions and operations and created formatted reports using SQL Server Reporting Services.• Explored the AdventureWorks2017 database and its schemas, tables, views and relationships using Microsoft SQL server and ER diagrams. • Identified opportunities for process optimization and data-driven decision-making based on insights derived from the AdventureWorks2017 database. • Analyzed the key performance indicators (KPIs) such as sales, profit, cost, markup percentage using SQL functions and operations and created formatted reports using SQL Server Reporting Services. 
